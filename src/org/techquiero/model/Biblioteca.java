@@ -27,28 +27,38 @@ package org.techquiero.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import org.techquiero.libreria.*;
 
 
 public class Biblioteca {
 	
-	public void	agregaLibro(List<Libro> librero,String titulo, String autor, double precio){
+	
+	
+	public static void agregaLibro(List<Libro> list,String titulo, String autor, double precio){
 		
 		Libro tmp = new Libro(titulo, autor, precio);
-		librero.add(tmp);
+		list.add(tmp);
 		
 	}
+		
+	public static void main(String[] a) {
+		ArrayList<Libro> list = new ArrayList<Libro>();
+		agregaLibro(list,"Microservicios","Christian Posta",45.98);
+		agregaLibro(list,"Patrones de diseño","Markus Eisele",72.80);
+		agregaLibro(list,"Programación Orientada a Objetos","Richard Warbuton",36.72);
+		agregaLibro(list,"Aprendiendo Java","Ben Evans",66.81);
+		agregaLibro(list,"Aprendiendo Python","David Mertz",43.27);
+		agregaLibro(list,"Big Data con Hadoop","Donald Miner",39.60);
+		agregaLibro(list,"IOS con Swift","Tim Nugent",24.18);
+		agregaLibro(list,"Programación reactiva","Konrad Malawski",58.70);
+		agregaLibro(list,"Programación con C","Joel Falcou",67.93);
+		agregaLibro(list,"Diseño de sistemas","Doug Davis",55.67);
+		
+		JOptionPane.showMessageDialog(null, list);
+		//System.out.println(list);
 	
-
-	List<Libro> librero = new ArrayList<Libro>();
-	this.agregaLibro(librero,"Microservicios","Christian",48.90);
 	
-	
-	//ArrayList<Matrices> list = new ArrayList<Matrices>();
-	//list.add( new Matrices(1,1,10) );
-	//list.add( new Matrices(1,2,20) );
-	
-	
-
+	}
 }
