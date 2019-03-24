@@ -126,7 +126,7 @@ public class Biblio {
 		frmBienvenidosALibreria.getContentPane().add(txtpnHola);
 		
 		JButton btnContinuar = new JButton("Continuar");
-		btnContinuar.setBounds(294, 375, 97, 25);
+		btnContinuar.setBounds(268, 375, 155, 25);
 		frmBienvenidosALibreria.getContentPane().add(btnContinuar);
 		btnContinuar.addActionListener(new ActionListener(){
 			

@@ -4,16 +4,20 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import org.techquiero.model.Carrito.ItemCarrito;
 
 import java.awt.Font;
 import javax.swing.border.LineBorder;
@@ -34,6 +38,8 @@ import javax.swing.JSlider;
 import javax.swing.JInternalFrame;
 
 public class Seleccion {
+	
+	Carrito myCarrito = new Carrito();
 
 	private JFrame frmBienvenidosALibreria;
 
@@ -93,22 +99,52 @@ public class Seleccion {
 		frmBienvenidosALibreria.getContentPane().add(comboBox);
 
 		for(Libro libro : this.list) {
-		    comboBox.addItem(libro.toString());
+		    comboBox.addItem(libro);
 		}
 		
 		JButton btnAgregar = new JButton("Agregar a carrito");
-		btnAgregar.setBounds(300, 223, 134, 25);
+		btnAgregar.setBounds(294, 223, 159, 25);
 		frmBienvenidosALibreria.getContentPane().add(btnAgregar);
+		btnAgregar.addActionListener(new ActionListener(){
+			 
+	        public void actionPerformed(ActionEvent e) {
+	        	ItemCarrito myItem;
+
+	        	// Agrega items al carrito
+	        	Libro libroSeleccionado = (Libro) comboBox.getSelectedItem();
+	        	int index = myCarrito.AgregaUno(libroSeleccionado);
+	        	System.out.println(myCarrito.toString());
+	        	myItem = myCarrito.items.get(index);
+	        	
+	        	//JOptionPane.showMessageDialog(null, "Agregado a carrito");
+	        	// Construimos la clase Unidades pasando el ultimo elemento ItemCarrito de la lista
+	        	Unidades cnt = new Unidades(myItem);
+	    		System.out.println("cnt.qt antes: " + Integer.toString(cnt.qt));
+	        	cnt.MuestraCantidad(myItem);
+	        	
+	        	// Una vez que cnt.itemAcambiar tiene la cantidad de libros deseados, lo copiampos a la lista en la posicion idx
+	        	myCarrito.items.set(index, myItem);
+	        	
+				/*
+				 * JTextPane textPane = new JTextPane(); textPane.setBounds(22, 82, 323, 53);
+				 * frmBienvenidosALibreria.getContentPane().add(textPane);
+				 * textPane.setText(myCarrito.items.toString());
+				 */
+	    		
+
+	        }
+		});
 		
-		JButton btnContinuar = new JButton("Revisar y Pagar");
+		JButton btnContinuar = new JButton("Revisar Pedido");
 		btnContinuar.setBounds(549, 223, 140, 25);
 		frmBienvenidosALibreria.getContentPane().add(btnContinuar);
 		btnContinuar.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
 				
+				//System.out.println(myCarrito.toString());
 				Cart sel = new Cart();
-				sel.CartScreen();				
+				sel.CartScreen();
 			}			
 
 		});
@@ -120,7 +156,7 @@ public class Seleccion {
 		btnCancelar.addActionListener(new ActionListener(){
 				 
 	        public void actionPerformed(ActionEvent e) {
-	 
+	        	JOptionPane.showMessageDialog(null, "Hasta Luego!");
 	            System.exit(0);
 	        }
 		});
