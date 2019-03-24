@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import org.techquiero.model.*;
 import org.techquiero.model.Carrito.ItemCarrito;
 
 import java.awt.Font;
@@ -39,7 +40,7 @@ import javax.swing.JInternalFrame;
 
 public class Seleccion {
 	
-	Carrito myCarrito = new Carrito();
+	//Carrito myCarrito = new Carrito();
 
 	private JFrame frmBienvenidosALibreria;
 
@@ -67,15 +68,15 @@ public class Seleccion {
 	public Seleccion() {
 		
 		Biblio.agregaLibro(list,"Microservicios","Christian Posta",45.98);
-		Biblio.agregaLibro(list,"Patrones de diseño","Markus Eisele",72.80);
-		Biblio.agregaLibro(list,"Programación Orientada a Objetos","Richard Warbuton",36.72);
+		Biblio.agregaLibro(list,"Patrones de diseï¿½o","Markus Eisele",72.80);
+		Biblio.agregaLibro(list,"Programaciï¿½n Orientada a Objetos","Richard Warbuton",36.72);
 		Biblio.agregaLibro(list,"Aprendiendo Java","Ben Evans",66.81);
 		Biblio.agregaLibro(list,"Aprendiendo Python","David Mertz",43.27);
 		Biblio.agregaLibro(list,"Big Data con Hadoop","Donald Miner",39.60);
 		Biblio.agregaLibro(list,"IOS con Swift","Tim Nugent",24.18);
-		Biblio.agregaLibro(list,"Programación reactiva","Konrad Malawski",58.70);
-		Biblio.agregaLibro(list,"Programación con C","Joel Falcou",67.93);
-		Biblio.agregaLibro(list,"Diseño de sistemas","Doug Davis",55.67);
+		Biblio.agregaLibro(list,"Programaciï¿½n reactiva","Konrad Malawski",58.70);
+		Biblio.agregaLibro(list,"Programaciï¿½n con C","Joel Falcou",67.93);
+		Biblio.agregaLibro(list,"Diseï¿½o de sistemas","Doug Davis",55.67);
 		
 		initialize();
 		
@@ -112,9 +113,9 @@ public class Seleccion {
 
 	        	// Agrega items al carrito
 	        	Libro libroSeleccionado = (Libro) comboBox.getSelectedItem();
-	        	int index = myCarrito.AgregaUno(libroSeleccionado);
-	        	System.out.println(myCarrito.toString());
-	        	myItem = myCarrito.items.get(index);
+	        	int index = Biblio.carritoDeCompras.AgregaUno(libroSeleccionado);
+	        	System.out.println("Agregado: " + Biblio.carritoDeCompras.toString()); // jennisem
+	        	myItem = Biblio.carritoDeCompras.items.get(index);
 	        	
 	        	//JOptionPane.showMessageDialog(null, "Agregado a carrito");
 	        	// Construimos la clase Unidades pasando el ultimo elemento ItemCarrito de la lista
@@ -123,12 +124,12 @@ public class Seleccion {
 	        	cnt.MuestraCantidad(myItem);
 	        	
 	        	// Una vez que cnt.itemAcambiar tiene la cantidad de libros deseados, lo copiampos a la lista en la posicion idx
-	        	myCarrito.items.set(index, myItem);
+	        	Biblio.carritoDeCompras.items.set(index, myItem);
 	        	
 				/*
 				 * JTextPane textPane = new JTextPane(); textPane.setBounds(22, 82, 323, 53);
 				 * frmBienvenidosALibreria.getContentPane().add(textPane);
-				 * textPane.setText(myCarrito.items.toString());
+				 * textPane.setText(Biblio.carritoDeCompras.items.toString());
 				 */
 	    		
 
@@ -142,7 +143,7 @@ public class Seleccion {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				//System.out.println(myCarrito.toString());
+				System.out.println(Biblio.carritoDeCompras.toString());
 				Cart sel = new Cart();
 				sel.CartScreen();
 			}			

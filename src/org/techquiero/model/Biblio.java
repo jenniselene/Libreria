@@ -42,6 +42,7 @@ import javax.swing.SwingConstants;
 
 public class Biblio {
 	
+	public static Carrito carritoDeCompras = new Carrito(); // El carrito de compras
 	public static String cadena = "";
 	
 	public static void agregaLibro(List<Libro> list,String titulo, String autor, double precio){

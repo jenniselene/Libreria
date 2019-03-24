@@ -19,8 +19,8 @@ public class Unidades {
 
 	private JFrame frmLibreriaTechquiero;
 	int idx = 0; // Indice elemento de la lista a cambiar cantidad
-	public ItemCarrito itemAcambiar;
-	int qt; // Cantidad seleccionada por el usuario
+	public static ItemCarrito itemAcambiar;
+	public int qt; // Cantidad seleccionada por el usuario
 
 	public static String datosLibroSeleccionado = "";
 
@@ -53,13 +53,14 @@ public class Unidades {
 	 */
 
 	public Unidades(ItemCarrito item) {
-		initialize();
+		initialize(item);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(ItemCarrito item) {
+		System.out.println("## JENNISEM: item en initialize: " + item.toString()); // jennisem
 
 		frmLibreriaTechquiero = new JFrame();
 		frmLibreriaTechquiero.setTitle("Libreria TechQuiero");
@@ -107,7 +108,8 @@ public class Unidades {
 
 			private void setCantidadSelecc(int cant) {
 				qt = cant;
-				System.out.println("itemAcambiar.cantdidad: " + qt);
+				item.SetCantidad(cant);
+				System.out.println("qt: " + Integer.toString(item.GetCantidad())); // jennisem
 			}
 
 			public void actionPerformed(ActionEvent e) {
