@@ -110,6 +110,7 @@ public class Unidades {
 				this.setCantidadSelecc((int) spinner.getValue());
 				frmLibreriaTechquiero.setVisible(false);
 				frmLibreriaTechquiero.dispose();
+				JOptionPane.showMessageDialog(null, "Libro agregado a carrito.\nCantidad actualizada.");
 			}
 		});
 

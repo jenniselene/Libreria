@@ -83,10 +83,10 @@ public class Carrito {
     //Metodo para imprimir pedido
     public String ImprimePedido() {
     	String cadena="";
-		cadena ="\n**********************************\n"+
-				"===  PEDIDO  ===\n" +
+		cadena ="\n***************** Libreria TechQuiero ******************\n"+
+				"===  PEDIDO  ===\n\n" +
 				this.toString() +
-				"\nTotal de Pedido: $ " + this.TotalPedido();
+				"\n\nTotal de Pedido: $ " + this.TotalPedido();
 		
 		return cadena;
     }

@@ -109,7 +109,7 @@ public class Seleccion {
 	        	Libro libroSeleccionado = (Libro) comboBox.getSelectedItem();
 	        	int index = Biblio.carritoDeCompras.AgregaUno(libroSeleccionado);
 	        	System.out.println("En Carrito: \n" + Biblio.carritoDeCompras.toString()); 
-	        	JOptionPane.showMessageDialog(null, "Agregado a carrito");
+	        	//JOptionPane.showMessageDialog(null, "Agregado a carrito");
 	        	myItem = Biblio.carritoDeCompras.items.get(index);
 	        	
 	        	// Construimos la clase Unidades pasando el ultimo elemento ItemCarrito de la lista
@@ -130,11 +130,15 @@ public class Seleccion {
 		btnContinuar.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(Biblio.carritoDeCompras.ImprimePedido());
+				//System.out.println(Biblio.carritoDeCompras.ImprimePedido());
 				frmBienvenidosALibreria.setVisible(false);
 				frmBienvenidosALibreria.dispose();
 				JOptionPane.showMessageDialog(null, "Total del Pedido: $"+Biblio.carritoDeCompras.TotalPedido()
 				+"\n\nGracias por su preferencia!");
+				
+				imprimirArchivo imp = new imprimirArchivo();
+				imp.Escribir("NuevoPedido.txt");
+				System.out.println("Archivo NuevoPedido.txt creado");
 			}			
 
 		});

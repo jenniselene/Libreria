@@ -1,0 +1,7 @@
+
+***************** Libreria TechQuiero ******************
+===  PEDIDO  ===
+
+1 --> Aprendiendo Java, de Ben Evans, $66.81 c/u, Total= $ 66.81 
+
+Total de Pedido: $ 66.81
