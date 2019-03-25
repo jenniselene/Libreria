@@ -78,8 +78,6 @@ public class Biblio {
 		ArrayList<Libro> list = agregaTodosLibros();
 		
 		for(Libro libro: list) {
-			//total = total + libro.getPrecio();
-			//System.out.println(libro);
 			cadena = cadena  + libro.toString();
 		}
 		
@@ -134,7 +132,9 @@ public class Biblio {
 			public void actionPerformed(ActionEvent e) {
 				
 				Seleccion sel = new Seleccion();
-				sel.NewScreen();				
+				sel.NewScreen();
+				frmBienvenidosALibreria.setVisible(false);
+				frmBienvenidosALibreria.dispose();
 			}			
 
 		});

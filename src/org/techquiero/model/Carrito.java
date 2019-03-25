@@ -1,10 +1,5 @@
 package org.techquiero.model;
 import java.util.ArrayList;
-/* 
-
-
-
-*/
 
 public class Carrito {
     public class ItemCarrito {
@@ -75,17 +70,36 @@ public class Carrito {
     	this.items.set(idx, itemTmp);
     }
     
+    //Metodo para calcular total de pedido
+    public double TotalPedido() {
+		double total = 0.0;
+		for(ItemCarrito i: this.items) {
+			total = total + i.GetCantidad()*i.GetLibro().getPrecio();
+		}
+		
+		return total;
+	}
+    
+    //Metodo para imprimir pedido
+    public String ImprimePedido() {
+    	String cadena="";
+		cadena ="\n**********************************\n"+
+				"===  PEDIDO  ===\n" +
+				this.toString() +
+				"\nTotal de Pedido: $ " + this.TotalPedido();
+		
+		return cadena;
+    }
+    
 	@Override
 	public String toString() {
 		String cadena="";
 		for(ItemCarrito i: items) {
-			//total = total + libro.getPrecio();
-			//System.out.println(libro);
-			cadena = cadena  + "idx: " + i.indice + " Qt: " + i.cantidad 
-					+ " " + i.libro.getTitulo() +" de "+ i.libro.getAutor()
-					+", $"+ i.libro.getPrecio()+"\n";
+			cadena = cadena + i.cantidad 
+					+ " --> " + i.libro.getTitulo() +", de "+ i.libro.getAutor()
+					+", $"+ i.libro.getPrecio()+" c/u, Total= $ " + i.cantidad*i.libro.getPrecio() +" \n";
 		}
-		//System.out.println(cadena);
+		
 		return cadena;
 	}
     
